@@ -7,38 +7,41 @@ Item {
     id: leftPanelRow
 
     property int currIndex: tabBar.currentIndex
+    property int tabSpacing: 15
 
     TabBar {
 
         id: tabBar
 
-        anchors {left: parent.left; top: parent.bottom }
+        anchors { left: parent.left; top: parent.bottom }
 
-        implicitHeight: 150
-        implicitWidth: 75
+        implicitHeight: tabSpacing + iconSize * 2
+        implicitWidth: iconSize
 
         contentItem: ListView {
+
+            spacing: tabSpacing
+
             model: tabBar.contentModel
             currentIndex: tabBar.currentIndex
-
-            spacing: 0 //control.spacing
             orientation: ListView.Vertical
-            boundsBehavior: Flickable.StopAtBounds
-            flickableDirection: Flickable.AutoFlickIfNeeded
-            snapMode: ListView.SnapToItem
 
-            highlightMoveDuration: 0
-            highlightRangeMode: ListView.ApplyRange
-            preferredHighlightBegin: 75
-            preferredHighlightEnd: height - 75
+//            boundsBehavior: Flickable.StopAtBounds
+//            flickableDirection: Flickable.AutoFlickIfNeeded
+//            snapMode: ListView.SnapToItem
+
+//            highlightMoveDuration: tabSpacing
+//            highlightRangeMode: ListView.ApplyRange
+//            preferredHighlightBegin: iconSize + tabSpacing
+//            preferredHighlightEnd: height - iconSize
         }
 
         TabButton {
 
             id: accountButton
 
-            height: 75
-            width: 75
+            height: iconSize
+            width: iconSize
 
             Image {
 
@@ -55,10 +58,10 @@ Item {
 
             id: tasksButton
 
-            height: 75
-            width: 75
+            height: iconSize
+            width: iconSize
 
-            anchors.top: accountButton.bottom
+            anchors { top: accountButton.bottom; topMargin: tabSpacing }
 
             Image {
 

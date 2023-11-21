@@ -6,10 +6,12 @@ import QtQuick.Layouts 1.5
 Window {
     id: window
 
+    property int iconSize: 75
+
     flags: Qt.FramelessWindowHint
 
     visible: true
-    //color: "black"
+    color: "black"
 
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
@@ -18,7 +20,7 @@ Window {
 
         id: leftTabBar
 
-        width: 75
+        width: iconSize
 
         anchors { left: parent.left; top: parent.top }
 
@@ -34,7 +36,7 @@ Window {
 
         anchors {
             left: leftTabBar.right; top: parent.top; bottom: parent.bottom; right: parent.right
-            margins: 24
+            margins: 15
         }
 
         AccountView { id: accountView }
