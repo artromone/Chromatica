@@ -1,6 +1,7 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Window 2.11
+import QtQuick.Layouts 1.5
 
 Window {
     id: window
@@ -13,44 +14,31 @@ Window {
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
 
-    Column {
+    LeftTabBar {
 
-        id: leftPanelRow
+        id: leftTabBar
 
-        spacing: 15
+        width: 75
 
-        anchors { top: window.top; left: window.left; bottom: window.bottom }
+        anchors { left: parent.left; top: parent.top }
 
-        Label {
-
-            id: account
-
-            height: 50
-            width: 50
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-
-            text: "A"
-            font.pixelSize: width * 2 / 3
-
+        Rectangle {
             color: "white"
-            background: Rectangle { color: "red" }
+            anchors.fill: parent
+        }
+    }
+
+    StackLayout {
+
+        currentIndex: leftTabBar.currIndex
+
+        anchors {
+            left: leftTabBar.right; top: parent.top; bottom: parent.top; right: parent.right
+            margins: 24
         }
 
-        Label {
+        AccountView { id: generalView }
 
-            id: tasks
-
-            height: 50
-            width: 50
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-
-            text: "T"
-            font.pixelSize: width * 2 / 3
-
-            color: "white"
-            background: Rectangle { color: "red" }
-        }
+        TasksView { id: anemView }
     }
 }
