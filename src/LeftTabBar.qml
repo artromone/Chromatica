@@ -43,8 +43,8 @@ Item {
             Image {
 
                 source: Qt.resolvedUrl("icons/account.svg")
-                sourceSize.width: 2000
-                sourceSize.height: 2000
+                sourceSize.width: 500
+                sourceSize.height: 500
 
                 fillMode: Image.PreserveAspectFit
                 anchors.fill: parent
@@ -63,8 +63,8 @@ Item {
             Image {
 
                 source: Qt.resolvedUrl("icons/tasks.svg")
-                sourceSize.width: 2000
-                sourceSize.height: 2000
+                sourceSize.width: 500
+                sourceSize.height: 500
 
                 fillMode: Image.PreserveAspectFit
                 anchors.fill: parent

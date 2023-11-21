@@ -9,7 +9,7 @@ Window {
     flags: Qt.FramelessWindowHint
 
     visible: true
-    color: "black"
+    //color: "black"
 
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
@@ -33,12 +33,12 @@ Window {
         currentIndex: leftTabBar.currIndex
 
         anchors {
-            left: leftTabBar.right; top: parent.top; bottom: parent.top; right: parent.right
+            left: leftTabBar.right; top: parent.top; bottom: parent.bottom; right: parent.right
             margins: 24
         }
 
-        AccountView { id: generalView }
+        AccountView { id: accountView }
 
-        TasksView { id: anemView }
+        TasksView { id: tasksView }
     }
 }
