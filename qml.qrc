@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>LeftTabBar.qml</file>
-        <file>AccountView.qml</file>
-        <file>TasksView.qml</file>
-    </qresource>
-</RCC>
