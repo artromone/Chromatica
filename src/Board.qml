@@ -3,6 +3,10 @@ import QtQuick.Controls 6.0
 
 Item {
 
+    function intQ() {
+        console.log("@rt1", rowContent.height);
+    }
+
     property string boardTitle: ""
 
     id: tasksView
@@ -45,6 +49,8 @@ Item {
         background: Rectangle { color: "gray" }
 
         text: "+"
+
+        onClicked: { intQ() }
     }
 
     ListView {
