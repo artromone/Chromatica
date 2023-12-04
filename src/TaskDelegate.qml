@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.1
+import QtQuick 6.0
+import QtQuick.Controls 6.0
 
 Item {
     id: dragDelegate
@@ -65,10 +65,10 @@ Item {
                     margins: 2
                 }
 
-                Label { text: qsTr('Task: ') + model.name }
-                Label { text: qsTr('Priority: ') + model.priority }
-                Label { text: qsTr('Note?: ') + model.isNote }
-                Label { text: qsTr('Creation date: ') + model.creationDate }
+                Label { text: qsTr('Task: ') + model.name; color: "black" }
+                Label { text: qsTr('Priority: ') + model.priority; color: "black" }
+                Label { text: qsTr('Note?: ') + model.isNote; color: "black" }
+                Label { text: qsTr('Creation date: ') + model.creationDate; color: "black" }
             }
         }
     }
