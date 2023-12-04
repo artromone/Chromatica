@@ -7,7 +7,7 @@
     </qresource>
 
     <qresource prefix="/icons">
-        <file>account.svg</file>
-        <file>tasks.svg</file>
+        <file>account.png</file>
+        <file>tasks.png</file>
     </qresource>
 </RCC>

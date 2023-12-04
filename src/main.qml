@@ -6,12 +6,12 @@ import QtQuick.Layouts 1.5
 Window {
     id: window
 
-    property int iconSize: 75
+    property int iconSize: 50
 
-    flags: Qt.FramelessWindowHint
+    //flags: Qt.FramelessWindowHint
 
     visible: true
-    color: "black"
+    color: "white"
 
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight

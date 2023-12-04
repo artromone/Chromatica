@@ -15,7 +15,7 @@ Item {
 
         anchors { left: parent.left; top: parent.bottom }
 
-        implicitHeight: tabSpacing + iconSize * 2
+        implicitHeight: iconSize * 2 /*+ tabSpacing*/
         implicitWidth: iconSize
 
         contentItem: ListView {
@@ -26,14 +26,14 @@ Item {
             currentIndex: tabBar.currentIndex
             orientation: ListView.Vertical
 
-//            boundsBehavior: Flickable.StopAtBounds
-//            flickableDirection: Flickable.AutoFlickIfNeeded
-//            snapMode: ListView.SnapToItem
+            boundsBehavior: Flickable.StopAtBounds
+            flickableDirection: Flickable.AutoFlickIfNeeded
+            snapMode: ListView.SnapToItem
 
-//            highlightMoveDuration: tabSpacing
-//            highlightRangeMode: ListView.ApplyRange
-//            preferredHighlightBegin: iconSize + tabSpacing
-//            preferredHighlightEnd: height - iconSize
+            highlightMoveDuration: tabSpacing
+            highlightRangeMode: ListView.ApplyRange
+            preferredHighlightBegin: iconSize + tabSpacing
+            preferredHighlightEnd: height - iconSize
         }
 
         TabButton {
@@ -43,9 +43,14 @@ Item {
             height: iconSize
             width: iconSize
 
+            background: Rectangle {
+                color: tabBar.currentIndex == 0 ? "gray" : "white"
+                radius: iconSize / 2
+            }
+
             Image {
 
-                source: Qt.resolvedUrl("icons/account.svg")
+                source: Qt.resolvedUrl("icons/account.png")
                 sourceSize.width: 500
                 sourceSize.height: 500
 
@@ -61,11 +66,16 @@ Item {
             height: iconSize
             width: iconSize
 
-            anchors { top: accountButton.bottom; topMargin: tabSpacing }
+            anchors { top: accountButton.bottom; /*topMargin: tabSpacing*/ }
+
+            background: Rectangle {
+                color: tabBar.currentIndex == 1 ? "gray" : "white"
+                radius: iconSize / 2
+            }
 
             Image {
 
-                source: Qt.resolvedUrl("icons/tasks.svg")
+                source: Qt.resolvedUrl("icons/tasks.png")
                 sourceSize.width: 500
                 sourceSize.height: 500
 
