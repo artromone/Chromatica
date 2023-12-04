@@ -6,16 +6,16 @@ import QtQuick.Layouts 6.0
 Window {
     id: window
 
-    property int iconSize: 50
+    property int iconSize: 40
 
     //flags: Qt.FramelessWindowHint
 
     visible: true
     color: "white"
 
-    width: Screen.desktopAvailableWidth
+    width: Screen.desktopAvailableWidth / 3
     minimumWidth: Screen.desktopAvailableWidth / 3
-    height: Screen.desktopAvailableHeight
+    height: Screen.desktopAvailableHeight / 3
     minimumHeight: Screen.desktopAvailableHeight / 3
 
     LeftNavigPanel {

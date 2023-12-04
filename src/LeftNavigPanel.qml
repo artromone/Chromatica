@@ -12,6 +12,8 @@ Item {
 
         id: tabBar
 
+        background: Rectangle { color: "white"}
+
         anchors { left: parent.left; top: parent.bottom }
 
         implicitHeight: iconSize * 2
@@ -43,7 +45,7 @@ Item {
             width: iconSize
 
             background: Rectangle {
-                color: tabBar.currentIndex == 0 ? "gray" : "white"
+                color: tabBar.currentIndex === 0 ? "gray" : "white"
                 radius: iconSize / 2
             }
 
@@ -68,7 +70,7 @@ Item {
             anchors { top: accountButton.bottom; /*topMargin: ...*/ }
 
             background: Rectangle {
-                color: tabBar.currentIndex == 1 ? "gray" : "white"
+                color: tabBar.currentIndex === 1 ? "gray" : "white"
                 radius: iconSize / 2
             }
 
