@@ -1,11 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>LeftTabBar.qml</file>
+        <file>LeftNavigPanel.qml</file>
         <file>AccountView.qml</file>
         <file>TasksView.qml</file>
-        <file>PetsModel.qml</file>
-        <file>DragDelegate.qml</file>
+        <file>TasksModel.qml</file>
+        <file>TaskDelegate.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>account.png</file>

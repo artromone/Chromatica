@@ -1,8 +1,17 @@
 import QtQuick 2.11
 
 Item {
-    Rectangle {
-        anchors.fill: parent
-        color: "blue"
+
+    id: tasksView
+
+    ListView {
+
+        height: tasksView.height
+
+        model: TasksModel {}
+        delegate: TaskDelegate {}
+
+        spacing: 5
+        cacheBuffer: 50 // TODO
     }
 }

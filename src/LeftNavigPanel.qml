@@ -4,10 +4,9 @@ import QtQuick.Window 2.11
 
 Item {
 
-    id: leftPanelRow
+    id: leftNavigPanel
 
-    property int currIndex: tabBar.currentIndex
-    property int tabSpacing: 15
+    property int currentIndex: tabBar.currentIndex
 
     TabBar {
 
@@ -15,12 +14,12 @@ Item {
 
         anchors { left: parent.left; top: parent.bottom }
 
-        implicitHeight: iconSize * 2 /*+ tabSpacing*/
+        implicitHeight: iconSize * 2
         implicitWidth: iconSize
 
         contentItem: ListView {
 
-            spacing: tabSpacing
+            spacing: 0
 
             model: tabBar.contentModel
             currentIndex: tabBar.currentIndex
@@ -30,9 +29,9 @@ Item {
             flickableDirection: Flickable.AutoFlickIfNeeded
             snapMode: ListView.SnapToItem
 
-            highlightMoveDuration: tabSpacing
+            highlightMoveDuration: 0
             highlightRangeMode: ListView.ApplyRange
-            preferredHighlightBegin: iconSize + tabSpacing
+            preferredHighlightBegin: iconSize
             preferredHighlightEnd: height - iconSize
         }
 
@@ -51,8 +50,8 @@ Item {
             Image {
 
                 source: Qt.resolvedUrl("icons/account.png")
-                sourceSize.width: 500
-                sourceSize.height: 500
+                sourceSize.width: iconSize
+                sourceSize.height: iconSize
 
                 fillMode: Image.PreserveAspectFit
                 anchors.fill: parent
@@ -66,7 +65,7 @@ Item {
             height: iconSize
             width: iconSize
 
-            anchors { top: accountButton.bottom; /*topMargin: tabSpacing*/ }
+            anchors { top: accountButton.bottom; /*topMargin: ...*/ }
 
             background: Rectangle {
                 color: tabBar.currentIndex == 1 ? "gray" : "white"
@@ -76,8 +75,8 @@ Item {
             Image {
 
                 source: Qt.resolvedUrl("icons/tasks.png")
-                sourceSize.width: 500
-                sourceSize.height: 500
+                sourceSize.width: iconSize
+                sourceSize.height: iconSize
 
                 fillMode: Image.PreserveAspectFit
                 anchors.fill: parent

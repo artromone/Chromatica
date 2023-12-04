@@ -5,17 +5,14 @@ Item {
     id: dragDelegate
 
     width: 300
-    height: 80
+    height: 75
 
     Rectangle {
 
         anchors.fill: parent
 
-        width: view.width
-        height: column.implicitHeight + 4
-
         border.width: 1
-        border.color: "black"
+        border.color: "gray"
 
         radius: 2
 
@@ -27,10 +24,10 @@ Item {
                 margins: 2
             }
 
-            Label { text: qsTr('Name: ') + model.name }
-            Label { text: qsTr('Type: ') + model.type }
-            Label { text: qsTr('Age: ') + model.age }
-            Label { text: qsTr('Size: ') + model.size }
+            Label { text: qsTr('Task: ') + model.name }
+            Label { text: qsTr('Priority: ') + model.priority }
+            Label { text: qsTr('Note?: ') + model.isNote }
+            Label { text: qsTr('Creation date: ') + model.creationDate }
         }
     }
 }

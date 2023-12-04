@@ -18,7 +18,7 @@ Window {
     height: Screen.desktopAvailableHeight
     minimumHeight: Screen.desktopAvailableHeight / 3
 
-    LeftTabBar {
+    LeftNavigPanel {
 
         id: leftTabBar
 
@@ -27,6 +27,7 @@ Window {
         anchors { left: parent.left; top: parent.top }
 
         Rectangle {
+
             color: "white"
             anchors.fill: parent
         }
@@ -34,7 +35,7 @@ Window {
 
     StackLayout {
 
-        currentIndex: leftTabBar.currIndex
+        currentIndex: leftTabBar.currentIndex
 
         anchors {
             left: leftTabBar.right; top: parent.top; bottom: parent.bottom; right: parent.right
