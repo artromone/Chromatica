@@ -14,7 +14,9 @@ Window {
     color: "white"
 
     width: Screen.desktopAvailableWidth
+    minimumWidth: Screen.desktopAvailableWidth / 3
     height: Screen.desktopAvailableHeight
+    minimumHeight: Screen.desktopAvailableHeight / 3
 
     LeftTabBar {
 
