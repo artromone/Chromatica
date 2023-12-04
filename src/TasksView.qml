@@ -7,6 +7,7 @@ Item {
     ListView {
 
         height: tasksView.height
+        width: 1000
 
         model: TasksModel {}
         delegate: TaskDelegate {}
