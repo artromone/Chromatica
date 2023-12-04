@@ -6,6 +6,7 @@
         <file>TasksView.qml</file>
         <file>TasksModel.qml</file>
         <file>TaskDelegate.qml</file>
+        <file>Board.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file>account.png</file>
