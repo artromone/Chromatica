@@ -6,6 +6,7 @@ Item {
     id: tasksView
 
     Board {
+
         boardTitle: "Stop doing this:"
 
         anchors.top: parent.top

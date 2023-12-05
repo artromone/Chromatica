@@ -38,7 +38,7 @@ Item {
 
             border { width: 1; color: "gray" }
             color: dragArea.held ? "lightgray" : "white"
-            radius: 2
+            radius: 5
 
             Behavior on color { ColorAnimation { duration: 100 } }
             states: State {

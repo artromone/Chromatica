@@ -4,7 +4,7 @@ import QtQuick.Controls 6.0
 Item {
 
     function intQ() {
-        console.log("@rt1", rowContent.height);
+        console.log("@rt1", window.width+=10);
     }
 
     property string boardTitle: ""
