@@ -1,23 +1,24 @@
 import QtQuick 6.0
-
+import QtQuick.Controls 6.0
 Item {
 
     id: accountView
 
-    Rectangle {
+    Rectangle
+    {
         id: mainRect
-        anchors.fill: parent
-        color: "gray"
-        Rectangle {
-            anchors.left: parent; anchors.top: parent
-            width: 100; height: 50
-            color: "lightgray"
+        anchors { top: parent; left: parent }
+    }
 
-            Text {
-                text: "ono rabotaet"
-                anchors.horizontalCenter: parent
-                font.pointSize: 10;
+
+    Rectangle {
+            id: rectToList
+            anchors { top: parent; left: parent }
+
+            Button {
+                id: buttonToGen
+                text: "Generate List"
+                onClicked: generateList()
             }
-        }
     }
 }
