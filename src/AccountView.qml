@@ -7,18 +7,29 @@ Item {
     Rectangle
     {
         id: mainRect
-        anchors { top: parent; left: parent }
+        anchors.fill: parent
+        color: "gray"
     }
 
 
     Rectangle {
             id: rectToList
-            anchors { top: parent; left: parent }
+            anchors { top: parent.top; left: parent.top }
+            height: parent.height
+            width: 200
+
+            color: "lightgray"
 
             Button {
                 id: buttonToGen
                 text: "Generate List"
                 onClicked: generateList()
+            }
+            TextField {
+                id: numberInput
+                anchors { top: parent.top; left: buttonToGen.right; right: parent.right}
+                placeholderText: "Enter a number"
+                validator: IntValidator {}
             }
     }
 }
