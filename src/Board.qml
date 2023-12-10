@@ -3,8 +3,8 @@ import QtQuick.Controls 6.0
 
 Item {
 
-    function intQ() {
-        console.log("@rt1", window.width+=10);
+    function increaseWidth() {
+        console.log("@rt1", window.width += 10);
     }
 
     property string boardTitle: ""
@@ -50,7 +50,7 @@ Item {
 
         text: "+"
 
-        onClicked: { intQ() }
+        onClicked: { increaseWidth() }
     }
 
     ListView {
