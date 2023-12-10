@@ -37,6 +37,7 @@ Item {
             id: buttonToGen
             text: "Generate List"
             onClicked: generateList()
+            z: 1
         }
         TextField {
             id: numberInput
@@ -46,11 +47,11 @@ Item {
         }
         ListView {
             width: parent.width
-            height: parent.height
+            height: parent.height - 40
             model: ListModel {
                 id: intElement
             }
-            anchors {top: buttonToGen.bottom; left: parent.left; bottom: parent.bottom}
+            anchors {top: buttonToGen.bottom; left: parent.left}
 
             delegate: Item {
 
