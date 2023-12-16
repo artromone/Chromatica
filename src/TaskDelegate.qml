@@ -67,8 +67,7 @@ Item {
 
                 Label { text: qsTr('Task: ') + model.name; color: "black" }
                 Label { text: qsTr('Priority: ') + model.priority; color: "black" }
-                Label { text: qsTr('Note?: ') + model.isNote; color: "black" }
-                Label { text: qsTr('Creation date: ') + model.creationDate; color: "black" }
+                Label { text: qsTr('Creation date: ') + Qt.formatDateTime(model.creation_date, "yyyy-MM-dd hh:mm:ss"); color: "black" }
             }
         }
     }

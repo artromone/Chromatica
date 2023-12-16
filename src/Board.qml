@@ -3,10 +3,6 @@ import QtQuick.Controls 6.0
 
 Item {
 
-    function intQ() {
-        console.log("@rt1", rowContent.height);
-    }
-
     property string boardTitle: ""
 
     id: tasksView
@@ -40,6 +36,7 @@ Item {
     }
 
     Button {
+
         anchors.top: parent.top
         anchors.left: rowContent.right; anchors.leftMargin: 10
 
@@ -50,12 +47,14 @@ Item {
 
         text: "+"
 
-        onClicked: { intQ() }
+        onClicked: {  }
     }
 
     ListView {
 
         id: listView
+
+        clip: true
 
         anchors.top: rowContent.bottom; anchors.topMargin: 10
         anchors.left: parent.left
@@ -63,7 +62,7 @@ Item {
         height: tasksView.height
         width: 1000
 
-        model: TasksModel {}
+        model: taskModel
         delegate: TaskDelegate {}
 
         spacing: 5
