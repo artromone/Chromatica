@@ -1,12 +1,12 @@
-#ifndef LISTELEMENTSMODEL_H
-#define LISTELEMENTSMODEL_H
+#ifndef TASKSMODEL_H
+#define TASKSMODEL_H
 
 #include <QAbstractListModel>
 #include <vector>
 
 #include "Task.h"
 
-class ListElementsModel: public QAbstractListModel
+class TasksModel: public QAbstractListModel
 {
     Q_OBJECT
 
@@ -18,16 +18,19 @@ class ListElementsModel: public QAbstractListModel
     };
 
 public:
-    ListElementsModel(QObject* parent = Q_NULLPTR);
+    TasksModel(QObject* parent = Q_NULLPTR);
 
     int rowCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
     bool setData(const QModelIndex &index, const QVariant &value, int role);
     QHash<int, QByteArray> roleNames() const;
 
+    void loadTasks();
+    void saveTasks();
+
 private:
     std::vector<Task> tasks;
 
 };
 
-#endif // LISTELEMENTSMODEL_H
+#endif // TASKSMODEL_H

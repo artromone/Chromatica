@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "ListElementsModel.h"
+#include "TasksModel.h"
 
 int main(int argc, char* argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    auto taskModel = new ListElementsModel();
+    auto taskModel = new TasksModel();
     engine.rootContext()->setContextProperty("taskModel", taskModel);
 
     return app.exec();
