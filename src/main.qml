@@ -12,6 +12,8 @@ Window {
 
     id: window
     visible: true
+    title: qsTr("Chromatica 24.01.2024 | Artem Romanovich")
+    color: "#dae0e2"
 
     property int iconSize: 50
 
@@ -36,7 +38,40 @@ Window {
 
         anchors {
             left: leftTabBar.right; top: parent.top; bottom: parent.bottom; right: parent.right
-            margins: 15
+            margins: 10
+        }
+
+        Item {
+
+            id: saveScreen
+
+            Rectangle {
+
+                color: "#3d4250"
+                anchors.fill: parent
+
+                Label {
+
+                    text: qsTr("Chromatica | https://t.me/art_rom")
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            // Rectangle {
+
+            //     width: 100
+            //     height: 100
+
+            //     color: "red"
+
+            //     SequentialAnimation on x {
+            //         loops: Animation.Infinite
+            //         NumberAnimation { to: saveScreen.width - 100; duration: 3000 }
+            //         NumberAnimation { to: 0; duration: 3000 }
+            //     }
+            // }
         }
 
         AccountView { id: accountView }
