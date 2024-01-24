@@ -3,6 +3,8 @@ import QtQuick.Controls 6.0
 import QtQuick.Window 6.0
 import QtQuick.Layouts 6.0
 
+import "left.navig.panel"
+
 Window {
 
     id: window
@@ -20,10 +22,11 @@ Window {
 
         id: leftTabBar
 
-        width: iconSize
+        leftPanelColor: "blue"
 
-        anchors.left: parent.left
         anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
     }
 
     StackLayout {

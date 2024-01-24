@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>LeftNavigPanel.qml</file>
         <file>AccountView.qml</file>
         <file>TasksView.qml</file>
         <file>TasksModel.qml</file>
         <file>TaskDelegate.qml</file>
         <file>Board.qml</file>
         <file>SettingsView.qml</file>
-    </qresource>
-
-    <qresource prefix="/icons">
-        <file>account.png</file>
-        <file>tasks.png</file>
-        <file>settings.png</file>
+        <file>left.navig.panel/LeftNavigPanel.qml</file>
+        <file>left.navig.panel/LeftTabBar.qml</file>
+        <file>left.navig.panel/LeftTabButton.qml</file>
+        <file>left.navig.panel/icons/account.png</file>
+        <file>left.navig.panel/icons/tasks.png</file>
+        <file>left.navig.panel/icons/settings.png</file>
+        <file>app.settings/Colors.qml</file>
     </qresource>
 </RCC>
