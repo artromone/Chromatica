@@ -16,7 +16,7 @@ Item {
 
         anchors { left: parent.left; top: parent.bottom }
 
-        implicitHeight: iconSize * 2
+        implicitHeight: iconSize * 3
         implicitWidth: iconSize
 
         contentItem: ListView {
@@ -77,6 +77,31 @@ Item {
             Image {
 
                 source: Qt.resolvedUrl("icons/tasks.png")
+                sourceSize.width: iconSize
+                sourceSize.height: iconSize
+
+                fillMode: Image.PreserveAspectFit
+                anchors.fill: parent
+            }
+        }
+
+        TabButton {
+
+            id: ssettingsButton
+
+            height: iconSize
+            width: iconSize
+
+            anchors { top: tasksButton.bottom; /*topMargin: ...*/ }
+
+            background: Rectangle {
+                color: tabBar.currentIndex === 2 ? "gray" : "white"
+                radius: iconSize / 2
+            }
+
+            Image {
+
+                source: Qt.resolvedUrl("icons/settings.png")
                 sourceSize.width: iconSize
                 sourceSize.height: iconSize
 

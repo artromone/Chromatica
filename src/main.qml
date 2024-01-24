@@ -4,14 +4,12 @@ import QtQuick.Window 6.0
 import QtQuick.Layouts 6.0
 
 Window {
+
     id: window
 
-    property int iconSize: 40
-
-    //flags: Qt.FramelessWindowHint
+    property int iconSize: 50
 
     visible: true
-    color: "white"
 
     width: Screen.desktopAvailableWidth / 3
     minimumWidth: Screen.desktopAvailableWidth / 3
@@ -24,13 +22,8 @@ Window {
 
         width: iconSize
 
-        anchors { left: parent.left; top: parent.top }
-
-        Rectangle {
-
-            color: "white"
-            anchors.fill: parent
-        }
+        anchors.left: parent.left
+        anchors.top: parent.top
     }
 
     StackLayout {
@@ -45,5 +38,7 @@ Window {
         AccountView { id: accountView }
 
         TasksView { id: tasksView }
+
+        SettingsView { id: settingsView }
     }
 }

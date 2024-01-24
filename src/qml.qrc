@@ -7,9 +7,12 @@
         <file>TasksModel.qml</file>
         <file>TaskDelegate.qml</file>
         <file>Board.qml</file>
+        <file>SettingsView.qml</file>
     </qresource>
+
     <qresource prefix="/icons">
         <file>account.png</file>
         <file>tasks.png</file>
+        <file>settings.png</file>
     </qresource>
 </RCC>
