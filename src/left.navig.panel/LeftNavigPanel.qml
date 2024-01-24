@@ -27,7 +27,7 @@ Item {
             anchors.top: parent.top
 
             buttonIndex: 1
-            iconSource: "icons/account.png"
+            iconSource: "icons/account"
         }
 
         LeftTabButton {
@@ -37,7 +37,7 @@ Item {
             anchors.top: accountButton.bottom
 
             buttonIndex: 2
-            iconSource: "icons/tasks.png"
+            iconSource: "icons/tasks"
         }
 
         LeftTabButton {
@@ -47,7 +47,7 @@ Item {
             anchors.top: tasksButton.bottom
 
             buttonIndex: 3
-            iconSource: "icons/settings.png"
+            iconSource: "icons/settings"
         }
     }
 

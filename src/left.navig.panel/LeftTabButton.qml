@@ -12,13 +12,13 @@ TabButton {
     width: iconSize
 
     background: Rectangle {
-        color: tabBar.currentIndex !== buttonIndex ? "#3d4250" : "#dae0e2"
-        radius: button.width / 2
+        color: tabBar.currentIndex !== buttonIndex ? "#3d4250" : "#51586b"
+        //radius: button.width / 2
     }
 
     Image {
 
-        source: Qt.resolvedUrl(iconSource)
+        source: Qt.resolvedUrl(iconSource + (tabBar.currentIndex !== buttonIndex ? "_black" : "_white") + ".svg")
         fillMode: Image.PreserveAspectFit
 
         anchors.fill: parent

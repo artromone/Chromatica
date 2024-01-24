@@ -15,9 +15,14 @@
         <file>left.navig.panel/LeftNavigPanel.qml</file>
         <file>left.navig.panel/LeftTabBar.qml</file>
         <file>left.navig.panel/LeftTabButton.qml</file>
-        <file>left.navig.panel/icons/account.png</file>
-        <file>left.navig.panel/icons/tasks.png</file>
-        <file>left.navig.panel/icons/settings.png</file>
+
+        <file>left.navig.panel/icons/account_black.svg</file>
+        <file>left.navig.panel/icons/tasks_black.svg</file>
+        <file>left.navig.panel/icons/settings_black.svg</file>
+
+        <file>left.navig.panel/icons/account_white.svg</file>
+        <file>left.navig.panel/icons/tasks_white.svg</file>
+        <file>left.navig.panel/icons/settings_white.svg</file>
 
         <file>app.settings/Colors.qml</file>
 
