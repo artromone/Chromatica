@@ -12,6 +12,9 @@ add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x050F00)
 
 find_package(Qt6 COMPONENTS Core Quick REQUIRED)
 
-add_executable(${PROJECT_NAME} "src/main.cpp" "src/qml.qrc")
+add_executable(${PROJECT_NAME} "src/main.cpp" "src/qml.qrc"
+    src/TasksModel.h src/TasksModel.cpp
+    src/Task.h
+    src/TaskUtils.h src/TaskUtils.cpp )
 
 target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Quick)

@@ -6,6 +6,6 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "gray"
+        color: "#3d4250"
     }
 }
