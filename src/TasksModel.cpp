@@ -80,6 +80,13 @@ QHash<int, QByteArray> TasksModel::roleNames() const
     return roles;
 }
 
+void TasksModel::addTask(const QString &taskName)
+{
+    tasks.push_back(Task{taskName, Task::Priority::Default, QDateTime::currentDateTime()});
+
+    saveTasks();
+}
+
 void TasksModel::saveTasks()
 {
     for(auto& task : tasks) {
@@ -127,8 +134,7 @@ void TasksModel::loadTasks()
                 Task::Priority priority = utils::stringToPriority(jsonObj["priority"].toString());
                 QDateTime dateTime = utils::stringToDateTime(jsonObj["date"].toString());
 
-                Task task{name, priority, dateTime};
-                tasks.push_back(task);
+                tasks.push_back(Task{name, priority, dateTime});
             }
         }
     }

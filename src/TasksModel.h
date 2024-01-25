@@ -25,6 +25,8 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role);
     QHash<int, QByteArray> roleNames() const;
 
+    Q_INVOKABLE void addTask(const QString& taskName);
+
     void loadTasks();
     void saveTasks();
 

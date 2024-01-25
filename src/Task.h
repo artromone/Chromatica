@@ -4,7 +4,7 @@
 #include <QString>
 #include <QDateTime>
 
-struct Task
+struct Task // TODO более правильный интерфейс
 {
     enum Priority
     {
@@ -13,7 +13,6 @@ struct Task
         Low,
         Default
     };
-
 
     QString name;
     Priority priority;

@@ -56,7 +56,7 @@ Item {
 
         text: "+"
 
-        onClicked: { newTaskEdit.visible = true }
+        onClicked: newTaskEdit.visible = true
     }
 
     TextField {
@@ -80,6 +80,7 @@ Item {
         }
 
         onEditingFinished: {
+            taskModel.addTask(text)
             visible = false
         }
     }
