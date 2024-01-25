@@ -56,7 +56,10 @@ Item {
 
         text: "+"
 
-        onClicked: newTaskEdit.visible = true
+        onClicked: {
+            newTaskEdit.visible = true
+            newTaskEdit.focus = true
+        }
     }
 
     TextField {
@@ -71,12 +74,14 @@ Item {
         }
 
         color: "black"
+        placeholderTextColor: "#3d4250"
+        placeholderText: qsTr("Название задачи...")
         padding: 5
 
         background: Rectangle {
             border { width: 2; color: "#3d4250" }
-            radius: 5
             color: "#dae0e2"
+            radius: 5
         }
 
         onAccepted: {
