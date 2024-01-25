@@ -79,28 +79,39 @@ Item {
             color: "#dae0e2"
         }
 
-        onEditingFinished: {
+        onAccepted: {
+            newTaskEdit.focus = false
+
             taskModel.addTask(text)
             visible = false
         }
     }
 
-    ListView {
+    Flickable {
 
-        id: listView
+        id: flickable
 
         clip: true
 
-        anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom); anchors.topMargin: 10
+        anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom)
+        anchors.topMargin: 10
         anchors.left: parent.left
 
+        width: 200
         height: contentHeight
-        width: 200//contentWidth
+        contentHeight: taskColumn.height + taskColumn.spacing
 
-        model: taskModel
-        delegate: TaskDelegate {}
+        Column {
 
-        spacing: 5
-        cacheBuffer: 50 // TODO
+            id: taskColumn
+
+            width: flickable.width
+            spacing: 5
+
+            Repeater {
+                model: taskModel
+                delegate: TaskDelegate {}
+            }
+        }
     }
 }

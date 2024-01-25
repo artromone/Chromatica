@@ -1,6 +1,8 @@
 #include <QStandardPaths>
+#include <QDesktopServices>
 #include <QFile>
 #include <QDir>
+#include <QUrl>
 #include <QJsonDocument>
 #include <QJsonValue>
 #include <QJsonObject>
@@ -10,11 +12,6 @@
 
 namespace
 {
-// QString dateToString(QDateTime& dateTime)
-// {
-//     return dateTime.toString("yyyy-MM-dd hh:mm:ss");
-// }
-
 QString notesDirPath() {
 
     QString dirPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/notes";
@@ -29,11 +26,8 @@ QString notesDirPath() {
 }
 }
 
-TasksModel::TasksModel(QObject* parent) {
-
-    QDateTime dateTime = QDateTime::currentDateTime();
-    //auto time = dateToString(dateTime);
-
+TasksModel::TasksModel(QObject* parent)
+{
     loadTasks();
 }
 
@@ -90,13 +84,37 @@ void TasksModel::addTask(const QString &taskName)
     endInsertRows();
 
     saveTasks();
+}
 
-    emit this->dataChanged(index(n - 1, 0), index(n - 1, 0));
+void TasksModel::removeTask(const QString &taskName)
+{
+    auto it = std::find_if(tasks.begin(), tasks.end(), [taskName](const Task& task){return task.name == taskName;});
+
+    int i = std::distance(tasks.begin(), it);
+    beginRemoveRows(QModelIndex(), i, i);
+    tasks.erase(it);
+    endRemoveRows();
+
+    saveTasks();
+}
+
+void TasksModel::openTask(const QString &taskName)
+{
+    QString filename = notesDirPath() + "/" + taskName + ".json";
+    // qDebug() << filename;
+    QDesktopServices::openUrl(QUrl::fromLocalFile(filename));
 }
 
 void TasksModel::saveTasks()
 {
-    for(auto& task : tasks) {
+    QDir notesDir(notesDirPath());
+    notesDir.setNameFilters(QStringList() << "*.json");
+    notesDir.setFilter(QDir::Files);
+    foreach (QString dirFile, notesDir.entryList()) {
+        notesDir.remove(dirFile);
+    }
+
+    for (auto& task : tasks) {
 
         QString filename = notesDirPath() + "/" + task.name + ".json";
 

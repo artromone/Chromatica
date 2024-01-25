@@ -26,6 +26,8 @@ public:
     QHash<int, QByteArray> roleNames() const;
 
     Q_INVOKABLE void addTask(const QString& taskName);
+    Q_INVOKABLE void removeTask(const QString& taskName);
+    Q_INVOKABLE void openTask(const QString& taskName);
 
     void loadTasks();
     void saveTasks();

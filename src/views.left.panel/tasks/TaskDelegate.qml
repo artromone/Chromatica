@@ -8,52 +8,44 @@ Item {
     height: content.height
 
     MouseArea {
+
         id: dragArea
 
-        property bool held: false
-
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
+        anchors { left: parent.left; right: parent.right }
         height: content.height
-
-        drag.target: held ? content : undefined
-        drag.axis: Drag.YAxis
-
-        onPressAndHold: held = true
-        onReleased: held = false
 
         Rectangle {
 
             id: content
 
             anchors.fill: parent
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.verticalCenter
-            }
-            width: dragArea.width //
-            height: column.implicitHeight + 4 //
+            anchors { horizontalCenter: parent.horizontalCenter; verticalCenter: parent.verticalCenter }
+
+            height: column.implicitHeight + 4
 
             border { width: 2; color: "#3d4250" }
-            color: dragArea.held ? "lightblue" : "#dae0e2"
+            color: "#dae0e2"
             radius: 5
 
-            Behavior on color { ColorAnimation { duration: 100 } }
-            states: State {
-                when: dragArea.held
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton
 
-                ParentChange {
-                    target: content
-                    parent: root
+                onClicked: menu.popup()
+            }
+
+            Menu {
+
+                id: menu
+
+                MenuItem {
+                    text: qsTr("Удалить")
+                    onTriggered: taskModel.removeTask(model.name)
                 }
-                AnchorChanges {
-                    target: content
-                    anchors {
-                        horizontalCenter: undefined
-                        verticalCenter: undefined
-                    }
+
+                MenuItem {
+                    text: qsTr("Показать в папке")
+                    onTriggered: taskModel.openTask(model.name)
                 }
             }
 
@@ -63,9 +55,9 @@ Item {
                 anchors { fill: parent; margins: 2 }
                 padding: 3
 
-                Label { text: qsTr('Task: ') + model.name; color: "black" }
-                Label { text: qsTr('Priority: ') + model.priority; color: "black" }
-                Label { text: qsTr('Creation date: ') + Qt.formatDateTime(model.creation_date, "dd.MM.yyyy hh:mm"); color: "black" }
+                Label { text: qsTr("Task: ") + model.name; color: "black" }
+                Label { text: qsTr("Priority: ") + model.priority; color: "black" }
+                Label { text: qsTr("Creation date: ") + Qt.formatDateTime(model.creation_date, "dd.MM.yyyy hh:mm"); color: "black" }
             }
         }
     }
