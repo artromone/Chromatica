@@ -5,7 +5,7 @@ Item {
     id: dragDelegate
 
     width: 200
-    height: 75
+    height: content.height
 
     MouseArea {
         id: dragArea
@@ -65,7 +65,7 @@ Item {
 
                 Label { text: qsTr('Task: ') + model.name; color: "black" }
                 Label { text: qsTr('Priority: ') + model.priority; color: "black" }
-                Label { text: qsTr('Creation date: ') + Qt.formatDateTime(model.creation_date, "yyyy-MM-dd hh:mm"); color: "black" }
+                Label { text: qsTr('Creation date: ') + Qt.formatDateTime(model.creation_date, "dd.MM.yyyy hh:mm"); color: "black" }
             }
         }
     }

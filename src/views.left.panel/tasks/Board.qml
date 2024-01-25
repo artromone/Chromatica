@@ -94,8 +94,8 @@ Item {
         anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom); anchors.topMargin: 10
         anchors.left: parent.left
 
-        height: 75 * count
-        width: 200
+        height: contentHeight
+        width: 200//contentWidth
 
         model: taskModel
         delegate: TaskDelegate {}

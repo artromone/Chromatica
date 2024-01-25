@@ -39,6 +39,7 @@ TasksModel::TasksModel(QObject* parent) {
 
 int TasksModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return tasks.size();
 }
 
@@ -82,9 +83,15 @@ QHash<int, QByteArray> TasksModel::roleNames() const
 
 void TasksModel::addTask(const QString &taskName)
 {
+    int n = tasks.size();
+
+    beginInsertRows(QModelIndex(), n, n);
     tasks.push_back(Task{taskName, Task::Priority::Default, QDateTime::currentDateTime()});
+    endInsertRows();
 
     saveTasks();
+
+    emit this->dataChanged(index(n - 1, 0), index(n - 1, 0));
 }
 
 void TasksModel::saveTasks()

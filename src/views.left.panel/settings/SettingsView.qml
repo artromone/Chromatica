@@ -7,7 +7,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "gray"
+        color: "#3d4250"
 
         CheckBox {
             property int windowFlags: 0
