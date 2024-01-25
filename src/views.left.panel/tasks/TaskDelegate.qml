@@ -60,11 +60,7 @@ Item {
             Column {
                 id: column
 
-                anchors {
-                    fill: parent
-                    margins: 2
-                }
-
+                anchors { fill: parent; margins: 2 }
                 padding: 3
 
                 Label { text: qsTr('Task: ') + model.name; color: "black" }

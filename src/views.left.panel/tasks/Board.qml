@@ -9,6 +9,15 @@ Item {
 
     id: tasksView
 
+    function hideTaskEdit()  {
+        newTaskEdit.visible = false
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onPressed: hideTaskEdit()
+    }
+
     Item {
 
         id: rowContent
@@ -29,7 +38,7 @@ Item {
             elide: Text.ElideRight
 
             color: "#dae0e2"
-            background: Rectangle { color: "#3d4250" }
+            background: Rectangle { color: "#3d4250"; radius: 3 }
 
             text: boardTitle
         }
@@ -43,11 +52,36 @@ Item {
         height: 25
         width: 25
 
-        background: Rectangle { color: "#3d4250" }
+        background: Rectangle { color: "#3d4250"; radius: 3 }
 
         text: "+"
 
-        // onClicked: {   }
+        onClicked: { newTaskEdit.visible = true }
+    }
+
+    TextField {
+
+        id: newTaskEdit
+
+        visible: false
+
+        anchors {
+            top: rowContent.bottom; left: parent.left; right: parent.right
+            topMargin: 10
+        }
+
+        color: "black"
+        padding: 5
+
+        background: Rectangle {
+            border { width: 2; color: "#3d4250" }
+            radius: 5
+            color: "#dae0e2"
+        }
+
+        onEditingFinished: {
+            visible = false
+        }
     }
 
     ListView {
@@ -56,11 +90,11 @@ Item {
 
         clip: true
 
-        anchors.top: rowContent.bottom; anchors.topMargin: 10
+        anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom); anchors.topMargin: 10
         anchors.left: parent.left
 
-        height: tasksView.height
-        width: 1000
+        height: 75 * count
+        width: 200
 
         model: taskModel
         delegate: TaskDelegate {}

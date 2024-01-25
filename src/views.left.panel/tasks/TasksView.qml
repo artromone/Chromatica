@@ -5,40 +5,28 @@ Item {
 
     id: tasksView
 
-    ProgressBar {
-
-        id: progressBar
-
-        indeterminate: true
-        visible: false
-
-        height: 5
-
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
+    MouseArea {
+        anchors {
+            left: tasksList.right; top: parent.top
+            bottom: parent.bottom; right: parent.right
+        }
+        onPressed: taskList.hideTaskEdit()
     }
 
     ListView {
 
-        // width: 500
-        //height: 500
+        id: tasksList
 
-        anchors.topMargin: progressBar.visible ? 10 : 0
+        width: taskList.width
 
-        anchors.top: progressBar.visible ? progressBar.bottom : parent.top
+        anchors.top: parent.top
         anchors.left: parent.left
-        anchors.right: parent.right
         anchors.bottom: parent.bottom
-
         spacing: 10
-
-        ScrollBar.horizontal: ScrollBar {
-        }
 
         Board {
 
-            id: basket
+            id: taskList
             anchors {top: parent.top; bottom: parent.bottom}
 
             boardTitle: "Basket"

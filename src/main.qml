@@ -12,7 +12,7 @@ Window {
 
     id: window
     visible: true
-    title: qsTr("Chromatica 24.01.2024 | Artem Romanovich")
+    title: qsTr("Chromatica 2024 | Artem Romanovich")
     color: "#dae0e2"
 
     property int iconSize: 50
