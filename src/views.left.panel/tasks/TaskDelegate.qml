@@ -40,12 +40,12 @@ Item {
 
                 MenuItem {
                     text: qsTr("Удалить")
-                    onTriggered: taskModel.removeTask(model.name)
+                    onTriggered: taskModel.removeTask(model.task_name)
                 }
 
                 MenuItem {
                     text: qsTr("Показать в папке")
-                    onTriggered: taskModel.openTask(model.name)
+                    onTriggered: taskModel.openTask(model.file_name)
                 }
             }
 
@@ -55,7 +55,7 @@ Item {
                 anchors { fill: parent; margins: 2 }
                 padding: 3
 
-                Label { text: qsTr("Task: ") + model.name; color: "black" }
+                Label { text: qsTr("Task: ") + model.task_name; color: "black" }
                 Label { text: qsTr("Priority: ") + model.priority; color: "black" }
                 Label { text: qsTr("Creation date: ") + Qt.formatDateTime(model.creation_date, "dd.MM.yyyy hh:mm"); color: "black" }
             }

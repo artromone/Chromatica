@@ -57,6 +57,8 @@ Item {
         text: "+"
 
         onClicked: {
+            newTaskEdit.text = ""
+
             newTaskEdit.visible = true
             newTaskEdit.focus = true
         }

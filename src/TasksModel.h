@@ -12,7 +12,8 @@ class TasksModel: public QAbstractListModel
 
     enum Roles
     {
-        Name = Qt::UserRole + 1,
+        TaskName = Qt::UserRole + 1,
+        FileName,
         Priority,
         CreationTime
     };
@@ -27,7 +28,7 @@ public:
 
     Q_INVOKABLE void addTask(const QString& taskName);
     Q_INVOKABLE void removeTask(const QString& taskName);
-    Q_INVOKABLE void openTask(const QString& taskName);
+    Q_INVOKABLE void openTask(const QString& fileHash);
 
     void loadTasks();
     void saveTasks();

@@ -7,6 +7,9 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
+#include <QCryptographicHash>
+#include <QRegularExpression>
+
 #include "TasksModel.h"
 #include "TaskUtils.h"
 
@@ -23,6 +26,13 @@ QString notesDirPath() {
     }
 
     return dirPath;
+}
+QString generateFileNameHash(const QString& str)
+{
+    QCryptographicHash hash(QCryptographicHash::Sha256);
+    hash.addData(str.toUtf8());
+    hash.addData(QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toUtf8());
+    return QString(hash.result().toHex());
 }
 }
 
@@ -44,9 +54,13 @@ QVariant TasksModel::data(const QModelIndex &index, int role) const
         return {};
     }
 
-    if (Name == role)
+    if (TaskName == role)
     {
-        return tasks.at(index.row()).name;
+        return tasks.at(index.row()).taskName;
+    }
+    if (FileName == role)
+    {
+        return tasks.at(index.row()).fileHash;
     }
     if (Priority == role)
     {
@@ -68,7 +82,8 @@ QHash<int, QByteArray> TasksModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractListModel::roleNames();
 
-    roles[Roles::Name] = "name";
+    roles[Roles::TaskName] = "task_name";
+    roles[Roles::FileName] = "file_name";
     roles[Roles::Priority] = "priority";
     roles[Roles::CreationTime] = "creation_date";
 
@@ -78,9 +93,12 @@ QHash<int, QByteArray> TasksModel::roleNames() const
 void TasksModel::addTask(const QString &taskName)
 {
     int n = tasks.size();
+    auto dt = QDateTime::currentDateTime();
+
+    qDebug() << dt.toString("MM.dd.yyyy,hh:mm:ss.zzz") << generateFileNameHash(taskName);
 
     beginInsertRows(QModelIndex(), n, n);
-    tasks.push_back(Task{taskName, Task::Priority::Default, QDateTime::currentDateTime()});
+    tasks.push_back(Task{taskName, generateFileNameHash(taskName), Task::Priority::Default, dt});
     endInsertRows();
 
     saveTasks();
@@ -88,7 +106,7 @@ void TasksModel::addTask(const QString &taskName)
 
 void TasksModel::removeTask(const QString &taskName)
 {
-    auto it = std::find_if(tasks.begin(), tasks.end(), [taskName](const Task& task){return task.name == taskName;});
+    auto it = std::find_if(tasks.begin(), tasks.end(), [taskName](const Task& task){return task.taskName == taskName;});
 
     int i = std::distance(tasks.begin(), it);
     beginRemoveRows(QModelIndex(), i, i);
@@ -98,11 +116,10 @@ void TasksModel::removeTask(const QString &taskName)
     saveTasks();
 }
 
-void TasksModel::openTask(const QString &taskName)
+void TasksModel::openTask(const QString &fileHash)
 {
-    QString filename = notesDirPath() + "/" + taskName + ".json";
-    // qDebug() << filename;
-    QDesktopServices::openUrl(QUrl::fromLocalFile(filename));
+    QString fileName = notesDirPath() + "/" + fileHash + ".json";
+    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 
 void TasksModel::saveTasks()
@@ -116,15 +133,15 @@ void TasksModel::saveTasks()
 
     for (auto& task : tasks) {
 
-        QString filename = notesDirPath() + "/" + task.name + ".json";
+        QString fileName = notesDirPath() + "/" + task.fileHash + ".json";
 
         QJsonObject jsonObj;
-        jsonObj["name"] = task.name;
+        jsonObj["name"] = task.taskName;
         jsonObj["priority"] = utils::priorityToString(task.priority);
         jsonObj["date"] = utils::dateTimeToString(task.creationDate);
 
         QJsonDocument doc(jsonObj);
-        QFile jsonFile(filename);
+        QFile jsonFile(fileName);
 
         if (jsonFile.open(QFile::WriteOnly)) {
 
@@ -159,7 +176,7 @@ void TasksModel::loadTasks()
                 Task::Priority priority = utils::stringToPriority(jsonObj["priority"].toString());
                 QDateTime dateTime = utils::stringToDateTime(jsonObj["date"].toString());
 
-                tasks.push_back(Task{name, priority, dateTime});
+                tasks.push_back(Task{name, jsonFile.fileName(), priority, dateTime});
             }
         }
     }

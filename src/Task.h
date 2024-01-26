@@ -14,7 +14,9 @@ struct Task // TODO более правильный интерфейс
         Default
     };
 
-    QString name;
+    QString taskName;
+    QString fileHash;
+
     Priority priority;
     QDateTime creationDate;
 
