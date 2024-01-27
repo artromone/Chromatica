@@ -14,7 +14,6 @@ Item {
     }
 
     MouseArea {
-        Rectangle {color: "red"; anchors.fill: parent}
         anchors.fill: parent
         onPressed: hideTaskEdit()
     }
