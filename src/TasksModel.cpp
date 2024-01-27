@@ -1,11 +1,11 @@
 #include <QStandardPaths>
 #include <QDesktopServices>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
 #include <QFile>
 #include <QDir>
 #include <QUrl>
-#include <QJsonDocument>
-#include <QJsonValue>
-#include <QJsonObject>
 
 #include <QCryptographicHash>
 #include <QRegularExpression>
@@ -176,7 +176,7 @@ void TasksModel::loadTasks()
                 Task::Priority priority = utils::stringToPriority(jsonObj["priority"].toString());
                 QDateTime dateTime = utils::stringToDateTime(jsonObj["date"].toString());
 
-                tasks.push_back(Task{name, jsonFile.fileName(), priority, dateTime});
+                tasks.push_back(Task{name, QFileInfo(jsonFile).baseName(), priority, dateTime});
             }
         }
     }

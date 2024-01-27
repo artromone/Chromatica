@@ -1,12 +1,23 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QStandardPaths>
 #include <QQmlContext>
+#include <QLockFile>
 #include <QIcon>
+#include <QDir>
 
 #include "TasksModel.h"
 
 int main(int argc, char* argv[])
 {
+    QString lockFilePath = QDir::tempPath() + "/Chromatica.lock";
+    QLockFile lockFile(lockFilePath);
+    if (!lockFile.tryLock())
+    {
+        qDebug() << "Another instance of the application is already running.";
+        return 1;
+    }
+
     QGuiApplication app(argc, argv);
     app.setWindowIcon(QIcon("logo.svg"));
 

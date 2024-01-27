@@ -99,13 +99,14 @@ Item {
         id: flickable
 
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
 
         anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom)
         anchors.topMargin: 10
         anchors.left: parent.left
+        anchors.bottom: parent.bottom
 
         width: 200
-        height: contentHeight
         contentHeight: taskColumn.height + taskColumn.spacing
 
         Column {
@@ -116,9 +117,11 @@ Item {
             spacing: 5
 
             Repeater {
-                model: taskModel
+                model: taskModel // FIXME BUG
                 delegate: TaskDelegate {}
             }
         }
+
+        ScrollBar.vertical: ScrollBar { size: flickable.height / flickable.contentHeight }
     }
 }
