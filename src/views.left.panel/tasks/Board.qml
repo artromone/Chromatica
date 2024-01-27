@@ -56,7 +56,12 @@ Item {
 
         text: "+"
 
-        onClicked: newTaskEdit.visible = true
+        onClicked: {
+            newTaskEdit.text = ""
+
+            newTaskEdit.visible = true
+            newTaskEdit.focus = true
+        }
     }
 
     TextField {
@@ -71,12 +76,14 @@ Item {
         }
 
         color: "black"
+        placeholderTextColor: "#3d4250"
+        placeholderText: qsTr("Название задачи...")
         padding: 5
 
         background: Rectangle {
             border { width: 2; color: "#3d4250" }
-            radius: 5
             color: "#dae0e2"
+            radius: 5
         }
 
         onAccepted: {
@@ -85,6 +92,8 @@ Item {
             taskModel.addTask(text)
             visible = false
         }
+
+        Keys.onEscapePressed: visible = false
     }
 
     Flickable {
@@ -92,13 +101,14 @@ Item {
         id: flickable
 
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
 
         anchors.top: (newTaskEdit.visible ? newTaskEdit.bottom : rowContent.bottom)
         anchors.topMargin: 10
         anchors.left: parent.left
+        anchors.bottom: parent.bottom
 
         width: 200
-        height: contentHeight
         contentHeight: taskColumn.height + taskColumn.spacing
 
         Column {
@@ -109,9 +119,11 @@ Item {
             spacing: 5
 
             Repeater {
-                model: taskModel
+                model: taskModel // FIXME BUG
                 delegate: TaskDelegate {}
             }
         }
+
+        ScrollBar.vertical: ScrollBar { size: flickable.height / flickable.contentHeight }
     }
 }

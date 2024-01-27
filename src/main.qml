@@ -15,7 +15,7 @@ Window {
     title: qsTr("Chromatica 2024 | Artem Romanovich")
     color: "#dae0e2"
 
-    property int iconSize: 50
+    property int iconSize: 45
 
     width: Screen.desktopAvailableWidth / 3
     height: Screen.desktopAvailableHeight / 3
