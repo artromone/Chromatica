@@ -8,19 +8,25 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: "#3d4250"
+    }
+
+    Row {
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         CheckBox {
+
             property int windowFlags: 0
 
-            anchors.centerIn: parent
             text: "Toggle Frameless Window"
 
             onClicked: {
-                if (checked) {
-                    // Включить Qt.FramelessWindowHint
+                if (checked)
+                {
                     windowFlags |= Qt.FramelessWindowHint;
-                } else {
-                    // Выключить Qt.FramelessWindowHint
+                }
+                else
+                {
                     windowFlags &= ~Qt.FramelessWindowHint;
                 }
 

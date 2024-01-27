@@ -14,6 +14,7 @@ Item {
     }
 
     MouseArea {
+        Rectangle {color: "red"; anchors.fill: parent}
         anchors.fill: parent
         onPressed: hideTaskEdit()
     }
@@ -92,6 +93,8 @@ Item {
             taskModel.addTask(text)
             visible = false
         }
+
+        Keys.onEscapePressed: visible = false
     }
 
     Flickable {

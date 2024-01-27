@@ -70,14 +70,37 @@ Item {
 
                     CheckBox { height: 16; width: 16 }
 
-                    Label {
+                    TextEdit {
+
+                        id: textEdit
 
                         width: 165
 
+                        readOnly: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                textEdit.readOnly = false
+                                textEdit.forceActiveFocus()
+                            }
+                        }
+
                         text: model.task_name
                         color: "black"
+                        wrapMode: TextEdit.Wrap
 
-                        elide: Text.ElideRight
+                        Keys.onEnterPressed: {
+                            readOnly = true
+                            focus = false
+                            model.task_name = text
+                        }
+                        Keys.onPressed: {
+                            if (event.key === Qt.Key_Return) {
+                                readOnly = true
+                                focus = false
+                                model.task_name = text
+                            }
+                        }
                     }
                 }
             }

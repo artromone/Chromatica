@@ -76,6 +76,20 @@ QVariant TasksModel::data(const QModelIndex &index, int role) const
 
 bool TasksModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    if (!index.isValid() || index.row() >= tasks.size())
+    {
+        return false;
+    }
+
+    if (TaskName == role)
+    {
+        qDebug() << value.toString();
+        tasks.at(index.row()).taskName = value.toString();
+        saveTasks();
+        return true;
+    }
+
+    return false;
 }
 
 QHash<int, QByteArray> TasksModel::roleNames() const
