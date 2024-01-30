@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
     if (!lockFile.tryLock())
     {
         qDebug() << "Another instance of the application is already running.";
+        Logger::getConnction()->insertLog("trying start another instance of the application", "E");
         return 1;
     }
 
@@ -36,6 +37,5 @@ int main(int argc, char* argv[])
     auto taskModel = new TasksModel();
     engine.rootContext()->setContextProperty("taskModel", taskModel);
 
-    Logger::getConnction()->insertLog("Prog finish");
     return app.exec();
 }

@@ -43,7 +43,9 @@ void Logger::insertLog(QString data, QString type)
     if (logFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
     {
         QTextStream stream(&logFile);
-        stream << type << data  << "\n";
+        stream << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
+               <<  "  " + type + "  "
+               << data  << "\n";
         logFile.close();
     }
     else

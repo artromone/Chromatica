@@ -2,6 +2,7 @@
 #define LOGGER_H
 
 #include <QString>
+#include <QFile>
 
 class Logger
 {
@@ -9,6 +10,7 @@ private:
     Logger();
     static Logger* loggerConnection;
     QString logFileName;
+    QFile logFile;
 public:
     Logger(const Logger&);
     Logger(Logger&&);
