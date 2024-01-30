@@ -38,5 +38,6 @@ int main(int argc, char* argv[])
     auto taskModel = new TasksModel();
     engine.rootContext()->setContextProperty("taskModel", taskModel);
 
+    Logger::getConnction()->insertLog("Prog finish"); //??
     return app.exec();
 }

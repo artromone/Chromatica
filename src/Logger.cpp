@@ -51,4 +51,8 @@ void Logger::insertLog(QString data, QString type)
     stream << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
            <<  "  " + type + "  "
            << data  << "\n";
+
+    qDebug() << "@nik" << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
+             <<  "  " + type + "  "
+             << data  << "\n";
 }
