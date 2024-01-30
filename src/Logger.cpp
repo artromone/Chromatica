@@ -23,7 +23,16 @@ QString logsDirPath() {
 Logger::Logger()
 {
     logFileName =  logsDirPath() + "/" + QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
-    qDebug() << "Logger initialized!!" << logFileName;
+    logFile.setFileName(logFileName);
+    logFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
+    qDebug() << "@nik Logger initialized!!" << logFileName;
+}
+
+Logger::~Logger()
+{
+    insertLog("prog finish");
+    qDebug() << "@nik Logger dead";
+    delete loggerConnection;
 }
 
 
@@ -38,20 +47,8 @@ Logger* Logger::getConnction()
 
 void Logger::insertLog(QString data, QString type)
 {
-    QFile logFile(logFileName);
-
-    if (logFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
-    {
-        QTextStream stream(&logFile);
-        stream << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
-               <<  "  " + type + "  "
-               << data  << "\n";
-        logFile.close();
-    }
-    else
-    {
-        // Обработка ошибки открытия файла
-        qDebug() << "Error opening the log file";
-    }
-
+    QTextStream stream(&logFile);
+    stream << QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss")
+           <<  "  " + type + "  "
+           << data  << "\n";
 }

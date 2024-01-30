@@ -4,10 +4,13 @@
 #include <QString>
 #include <QFile>
 
-class Logger
+class Logger : public QObject
 {
+    Q_OBJECT
 private:
     Logger();
+    ~Logger(); //???
+    void cleanOldLog(); // TODO
     static Logger* loggerConnection;
     QString logFileName;
     QFile logFile;
@@ -17,8 +20,8 @@ public:
     Logger& operator=(const Logger&);
     Logger& operator=(Logger&&);
 
-    static Logger* getConnction();
-    void insertLog(QString data, QString type = " ");
+    Q_INVOKABLE static Logger* getConnction();
+    Q_INVOKABLE void insertLog(QString data, QString type = " ");
 };
 
 #endif // LOGGER_H

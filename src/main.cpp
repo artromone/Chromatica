@@ -28,6 +28,7 @@ int main(int argc, char* argv[])
     app.setWindowIcon(QIcon("logo.svg"));
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("Logger", Logger::getConnction());
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
     {
