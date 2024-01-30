@@ -1,10 +1,13 @@
 #include "Logger.h"
 
 #include <QDebug>
+#include <QString>
+#include <QDateTime>
 
 Logger::Logger()
 {
-    qDebug() << "Logger initialized";
+    logFileName = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+    qDebug() << "Logger initialized!!" << logFileName;
 }
 
 

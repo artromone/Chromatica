@@ -1,11 +1,14 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <QString>
+
 class Logger
 {
 private:
     Logger();
     static Logger* loggerConnection;
+    QString logFileName;
 public:
     Logger(const Logger&);
     Logger(Logger&&);
