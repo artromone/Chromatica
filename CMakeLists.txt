@@ -15,6 +15,7 @@ find_package(Qt6 COMPONENTS Core Quick REQUIRED)
 add_executable(${PROJECT_NAME} "src/main.cpp" "src/qml.qrc"
     src/TasksModel.h src/TasksModel.cpp
     src/Task.h
-    src/TaskUtils.h src/TaskUtils.cpp )
+    src/TaskUtils.h src/TaskUtils.cpp
+    src/Logger.h src/Logger.cpp )
 
 target_link_libraries(${PROJECT_NAME} Qt6::Core Qt6::Quick)

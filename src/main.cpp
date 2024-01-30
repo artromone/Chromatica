@@ -8,8 +8,13 @@
 
 #include "TasksModel.h"
 
+#include "Logger.h"
+
+Logger* Logger::loggerConnection = nullptr;
+
 int main(int argc, char* argv[])
 {
+    Logger::getConnction();
     QString lockFilePath = QDir::tempPath() + "/Chromatica.lock";
     QLockFile lockFile(lockFilePath);
     if (!lockFile.tryLock())
