@@ -8,21 +8,76 @@ import "views.left.panel/account"
 import "views.left.panel/tasks"
 import "views.left.panel/settings"
 
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+Window {
 
-ApplicationWindow {
+    id: window
     visible: true
-    width: 400
-    height: 300
-    title: "QML Logger Example"
+    title: qsTr("Chromatica 2024 | Artem Romanovich")
+    color: "#dae0e2"
 
-    Button {
-        text: "Log something"
-        anchors.centerIn: parent
+    property int iconSize: 45
 
-        onClicked: {
-            Logger.getConnction().insertLog("Some log message", " ")
+    width: Screen.desktopAvailableWidth / 3
+    height: Screen.desktopAvailableHeight / 3
+
+    minimumWidth: Screen.desktopAvailableWidth / 3
+    minimumHeight: Screen.desktopAvailableHeight / 3
+
+    LeftNavigPanel {
+
+        id: leftTabBar
+
+        leftPanelColor: "#3d4250"
+
+        anchors { top: parent.top; left: parent.left; bottom: parent.bottom }
+    }
+
+    StackLayout {
+
+        currentIndex: leftTabBar.currentIndex
+
+        anchors {
+            left: leftTabBar.right; top: parent.top; bottom: parent.bottom; right: parent.right
+            margins: 10
         }
+
+        Item {
+
+            id: saveScreen
+
+            Rectangle {
+
+                color: "#3d4250"
+                anchors.fill: parent
+
+                Label {
+
+                    text: qsTr("Chromatica | https://t.me/art_rom")
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+            }
+
+            // Rectangle {
+
+            //     width: 100
+            //     height: 100
+
+            //     color: "red"
+
+            //     SequentialAnimation on x {
+            //         loops: Animation.Infinite
+            //         NumberAnimation { to: saveScreen.width - 100; duration: 3000 }
+            //         NumberAnimation { to: 0; duration: 3000 }
+            //     }
+            // }
+        }
+
+        AccountView { id: accountView }
+
+        TasksView { id: tasksView }
+
+        SettingsView { id: settingsView }
     }
 }

@@ -26,5 +26,6 @@ TabButton {
         sourceSize.height: button.height
     }
 
-    onClicked: { tabBar.currentIndex = buttonIndex }
+    onClicked: { tabBar.currentIndex = buttonIndex;
+                 Logger.getConnction().insertLog("click on left tab button with index " + buttonIndex) }
 }

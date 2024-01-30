@@ -24,10 +24,13 @@ Item {
                 if (checked)
                 {
                     windowFlags |= Qt.FramelessWindowHint;
+                    Logger.getConnction().insertLog("enable frameless window")
+
                 }
                 else
                 {
                     windowFlags &= ~Qt.FramelessWindowHint;
+                    Logger.getConnction().insertLog("disable frameless window")
                 }
 
                 window.flags = windowFlags;
