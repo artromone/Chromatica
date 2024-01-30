@@ -14,7 +14,7 @@ Logger* Logger::loggerConnection = nullptr;
 
 int main(int argc, char* argv[])
 {
-    Logger::getConnction();
+    Logger::getConnction()->insertLog("Prog start");
     QString lockFilePath = QDir::tempPath() + "/Chromatica.lock";
     QLockFile lockFile(lockFilePath);
     if (!lockFile.tryLock())
@@ -36,5 +36,6 @@ int main(int argc, char* argv[])
     auto taskModel = new TasksModel();
     engine.rootContext()->setContextProperty("taskModel", taskModel);
 
+    Logger::getConnction()->insertLog("Prog finish");
     return app.exec();
 }

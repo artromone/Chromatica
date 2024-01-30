@@ -16,6 +16,7 @@ public:
     Logger& operator=(Logger&&);
 
     static Logger* getConnction();
+    void insertLog(QString data, QString type = " ");
 };
 
 #endif // LOGGER_H
